@@ -5,11 +5,10 @@ defmodule HyfWeb.PageLive do
   def mount(_params, _session, socket) do
     Phoenix.PubSub.subscribe(Hyf.PubSub, "changes")
 
+    tests = Hyf.Storage.read_all()
     {:ok,
-     assign(socket,
-       query: "",
-       results: %{}
-     )}
+     assign(socket, tests: tests)
+    }
   end
 
   @impl true
