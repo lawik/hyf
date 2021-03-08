@@ -1,0 +1,22 @@
+{
+  "name": "HYF Student Progress",
+  "description": "Auto-refresh of test results",
+  "repository": "https://github.com/nkuik/hyf-student-progress",
+  "keywords": ["elixir", "phoenix", "chat"],
+  "env": {
+    "HOST": {
+      "description": "The url of heroku app",
+      "value": "CHANGE-ME",
+      "required": true
+    }
+  },
+  "stack": "heroku-18",
+  "buildpacks": [
+    {
+      "url": "https://buildpack-registry.s3.amazonaws.com/buildpacks/hashnuke/elixir.tgz"
+    },
+    {
+      "url": "https://github.com/gjaldon/heroku-buildpack-phoenix-static.git"
+    }
+  ]
+}

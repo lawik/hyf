@@ -25,7 +25,13 @@ defmodule Hyf.Storage do
     |> Enum.reduce(%{}, fn filename, dataset ->
       name = Path.basename(filename, ".json")
       data = get(name)
-      Map.put(dataset, name, data)
+      results =
+        try do
+          %{total_tests: Map.get(data, "numTotalTests", 0), passed_tests: Map.get(data, "numPassedTests", 0)}
+        rescue
+          _ -> "Invalid results"
+        end
+      Map.put(dataset, name, results)
     end)
   end
 end
